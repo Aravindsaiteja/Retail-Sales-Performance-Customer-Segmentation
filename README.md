@@ -1,4 +1,4 @@
-# 🛒 Retail Sales Performance & Customer Segmentation Dashboard
+#  Retail Sales Performance & Customer Segmentation Dashboard
 
 ![Capstone Project](https://img.shields.io/badge/Project-SQL%20%2B%20Power%20BI%20Capstone-blue.svg)
 ![Python](https://img.shields.io/badge/Python-3.10-green.svg)
@@ -9,7 +9,7 @@ An end-to-end enterprise data engineering and analytics solution built on the **
 
 ---
 
-## 📐 Project Architecture & Workflow
+##  Project Architecture & Workflow
 
 ```
 [Raw UCI Dataset] ──> [Python Pandas EDA & Cleaning] ──> [Clean CSV]
@@ -24,7 +24,7 @@ An end-to-end enterprise data engineering and analytics solution built on the **
 
 ---
 
-## 🗄️ Relational Schema Diagram (PostgreSQL)
+##  Relational Schema Diagram (PostgreSQL)
 
 ```
        CUSTOMERS                     ORDERS                    ORDER_ITEMS
@@ -45,7 +45,7 @@ An end-to-end enterprise data engineering and analytics solution built on the **
 
 ---
 
-## 💻 Tech Stack & Deliverables
+##  Tech Stack & Deliverables
 
 - **Language:** Python 3.10 (Pandas, Matplotlib, Seaborn, SQLAlchemy)
 - **Database:** PostgreSQL / MySQL / SQLite (`psycopg2`)
@@ -60,7 +60,7 @@ An end-to-end enterprise data engineering and analytics solution built on the **
 
 ---
 
-## 🚀 Quick Start & Database Restoration Guide
+##  Quick Start & Database Restoration Guide
 
 ### 1. Requirements & Setup
 ```bash
@@ -97,7 +97,7 @@ psql -U postgres -d retail_dw -f sql/all_retail_pipeline.sql
 
 ---
 
-## 📊 Power BI Connection & Modeling Instructions (Phase 6 & 7)
+##  Power BI Connection & Modeling Instructions (Phase 6 & 7)
 
 ### Step 1: Connect Power BI to PostgreSQL
 1. Open Power BI Desktop -> **Get Data** -> **PostgreSQL Database**.
@@ -120,7 +120,7 @@ In the **Model View**, establish the following 1-to-Many (`1:*`) single-directio
 
 ---
 
-## 🖼️ Dashboard Preview & Page Specifications
+##  Dashboard Preview & Page Specifications
 
 ### Page 1: Sales Overview
 - **Header KPI Cards:** Total Revenue (`$8.89M`), Total Orders (`18,532`), AOV (`$479.56`), Repeat Purchase Rate (`65.5%`).
@@ -153,7 +153,7 @@ In the **Model View**, establish the following 1-to-Many (`1:*`) single-directio
 
 ---
 
-## 📝 Key Findings Summary
+##  Key Findings Summary
 
 1. **Revenue Concentration:** 81.5% of total revenue originates from the UK market ($7.30M), highlighting high geographic expansion potential in Germany and France.
 2. **Pareto RFM Segment Distribution:** **Champions** represent only 23.0% of customers but generate **65.2%** ($5.79M) of total company revenue.
@@ -161,5 +161,5 @@ In the **Model View**, establish the following 1-to-Many (`1:*`) single-directio
 
 ---
 
-## 📜 License
+##  License
 This project is released under the MIT License for academic and portfolio demonstration purposes.
