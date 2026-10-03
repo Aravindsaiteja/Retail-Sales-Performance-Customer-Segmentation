@@ -1,0 +1,104 @@
+// ===============================================================================
+// Phase 6 — Power BI Data Model DAX Measures
+// Project: Retail Sales Performance & Customer Segmentation
+// Language: DAX (Data Analysis Expressions)
+// ===============================================================================
+
+// -------------------------------------------------------------------------------
+// 1. Core Financial Measures
+// -------------------------------------------------------------------------------
+
+Total Revenue = 
+SUM(sales_fact[line_revenue])
+
+Total Orders = 
+DISTINCTCOUNT(sales_fact[order_id])
+
+Average Order Value = 
+DIVIDE([Total Revenue], [Total Orders], 0)
+
+Total Items Sold = 
+SUM(sales_fact[quantity])
+
+Total Customers = 
+DISTINCTCOUNT(sales_fact[customer_id])
+
+// -------------------------------------------------------------------------------
+// 2. Growth & Time Intelligence Measures
+// -------------------------------------------------------------------------------
+
+Previous Month Revenue = 
+CALCULATE(
+    [Total Revenue],
+    DATEADD(date_dim[full_date], -1, MONTH)
+)
+
+Revenue MoM Growth % = 
+VAR CurrentRev = [Total Revenue]
+VAR PrevRev = [Previous Month Revenue]
+RETURN
+    DIVIDE(CurrentRev - PrevRev, PrevRev, 0)
+
+Same Period Previous Year Revenue = 
+CALCULATE(
+    [Total Revenue],
+    SAMEPERIODLASTYEAR(date_dim[full_date])
+)
+
+Revenue YoY Growth % = 
+VAR CurrentRev = [Total Revenue]
+VAR PrevYearRev = [Same Period Previous Year Revenue]
+RETURN
+    DIVIDE(CurrentRev - PrevYearRev, PrevYearRev, 0)
+
+// -------------------------------------------------------------------------------
+// 3. Customer Retention & Segmentation Measures
+// -------------------------------------------------------------------------------
+
+Repeat Customers Count = 
+CALCULATE(
+    COUNTROWS(customers),
+    FILTER(
+        customers,
+        CALCULATE(DISTINCTCOUNT(sales_fact[order_id])) > 1
+    )
+)
+
+Repeat Purchase Rate % = 
+DIVIDE([Repeat Customers Count], [Total Customers], 0)
+
+Customer Count by Segment = 
+CALCULATE(
+    COUNT(customer_segments[customer_id])
+)
+
+Segment Revenue Share % = 
+DIVIDE(
+    [Total Revenue],
+    CALCULATE([Total Revenue], ALL(customer_segments[segment_label])),
+    0
+)
+
+// -------------------------------------------------------------------------------
+// 4. New vs Returning Customer Revenue Split
+// -------------------------------------------------------------------------------
+
+// Identifies if transaction occurred in the customer's first-ever purchase month
+New Customer Revenue = 
+CALCULATE(
+    [Total Revenue],
+    FILTER(
+        sales_fact,
+        RELATED(customers[first_order_date]) >= STARTOFMONTH(date_dim[full_date]) &&
+        RELATED(customers[first_order_date]) <= ENDOFMONTH(date_dim[full_date])
+    )
+)
+
+Returning Customer Revenue = 
+[Total Revenue] - [New Customer Revenue]
+
+New Customer Revenue % = 
+DIVIDE([New Customer Revenue], [Total Revenue], 0)
+
+Returning Customer Revenue % = 
+DIVIDE([Returning Customer Revenue], [Total Revenue], 0)

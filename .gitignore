@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual Environments
+env/
+venv/
+ENV/
+
+# Database files
+*.db
+*.sqlite3
+
+# Temporary / OS files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Raw large zip file (optional)
+online_retail.zip
