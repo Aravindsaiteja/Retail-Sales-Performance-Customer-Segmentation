@@ -1,9 +1,5 @@
 #  Retail Sales Performance & Customer Segmentation Dashboard
 
-![Capstone Project](https://img.shields.io/badge/Project-SQL%20%2B%20Power%20BI%20Capstone-blue.svg)
-![Python](https://img.shields.io/badge/Python-3.10-green.svg)
-![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL%20%2F%20MySQL-blue)
-![Power BI](https://img.shields.io/badge/BI-Power%20BI%20Desktop-orange)
 
 An end-to-end enterprise data engineering and analytics solution built on the **UCI Online Retail II dataset**. This capstone project covers data extraction, EDA cleaning in Python, normalized relational data warehouse design in PostgreSQL, advanced SQL analytical modeling (RFM segmentation, window functions), DAX measures, and a 3-page interactive Power BI dashboard.
 
